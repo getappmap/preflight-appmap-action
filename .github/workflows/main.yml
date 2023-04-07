@@ -11,8 +11,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install and configure AppMap
-        uses: getappmap/install-appmap-action@v1-pre.2
+        uses: getappmap/install-appmap-action@v1-pre.5
         id: install-appmap
+      - name: Upgrade AppMap tools
+        run: |
+          curl -L -o /tmp/appmap https://github.com/getappmap/appmap-js/releases/download/%40appland%2Fappmap-preflight-v1.0-pre.3/appmap-preflight-linux-x64
+          chmod a+x /tmp/appmap
       - name: Install dependency libraries
         run: yarn install
       - name: Build
@@ -25,18 +29,8 @@ jobs:
         # appmap-agent-js@13.6.0 doesn't propagate the jest exit code, so the main Test step cannot be the AppMap step.
         run: yarn appmap
       - name: Archive AppMaps
-        uses: getappmap/archive-appmap-action@v1-pre.5
+        uses: getappmap/archive-appmap-action@v1-pre.8
         id: archive-appmaps
         with:
+          revision: c38f91b63dc454026fdbe7d9266e983bfee5817e
           verbose: true
-      # - name: Preflight this commit
-      #   uses: ./
-      #   id: appmap-preflight
-      #   with:
-      #     verbose: true
-      - name: Commit changes
-        # If you forgot to package the distribution, you'll see a commit added to your PR
-        uses: EndBug/add-and-commit@v7
-        with:
-          add: dist
-          message: 'chore: Packaged distribution of the GitHub action'
