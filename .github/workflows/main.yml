@@ -32,5 +32,5 @@ jobs:
         uses: getappmap/archive-appmap-action@v1-pre.8
         id: archive-appmaps
         with:
-          revision: c38f91b63dc454026fdbe7d9266e983bfee5817e
+          commit-sha: c38f91b63dc454026fdbe7d9266e983bfee5817e
           verbose: true
