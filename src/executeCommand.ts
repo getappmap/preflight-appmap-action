@@ -40,10 +40,14 @@ export function executeCommand(
   return new Promise<string>((resolve, reject) => {
     command.addListener('exit', (code, signal) => {
       if (signal || code === 0) {
-        if (signal) log(LogLevel.Info, `Command killed by signal ${signal}`);
+        if (signal)
+          log(
+            LogLevel.Warn,
+            `Command "${commandString}" killed by signal ${signal}, exited with code ${code}`
+          );
         resolve(result.join(''));
       } else {
-        if (!printCommand) log(LogLevel.Warn, commandString);
+        log(LogLevel.Warn, `Command "${commandString}" exited with failure code ${code}`);
         log(LogLevel.Warn, stderr.join(''));
         log(LogLevel.Warn, result.join(''));
 

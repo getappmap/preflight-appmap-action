@@ -22,7 +22,7 @@ export default class Compare {
 
     log(
       LogLevel.Info,
-      `Comparing base revision ${this.baseRevision} to head revision ${this.headRevision}`
+      `Comparing base revision ${this.baseRevision} with head revision ${this.headRevision}`
     );
     log(LogLevel.Debug, `Report output directory is ${outputDir}`);
 

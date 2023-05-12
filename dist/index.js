@@ -170,7 +170,7 @@ class Compare {
     compare() {
         return __awaiter(this, void 0, void 0, function* () {
             const outputDir = this.outputDir || `.appmap/change-report/${this.baseRevision}-${this.headRevision}`;
-            (0, log_1.default)(log_1.LogLevel.Info, `Comparing base revision ${this.baseRevision} to head revision ${this.headRevision}`);
+            (0, log_1.default)(log_1.LogLevel.Info, `Comparing base revision ${this.baseRevision} with head revision ${this.headRevision}`);
             (0, log_1.default)(log_1.LogLevel.Debug, `Report output directory is ${outputDir}`);
             let cmd = `${this.appmapCommand} compare --base-revision ${this.baseRevision} --head-revision ${this.headRevision} --clobber-output-dir=true`;
             if ((0, verbose_1.default)())
@@ -474,12 +474,11 @@ function executeCommand(cmd, printCommand = (0, verbose_1.default)(), printStdou
         command.addListener('exit', (code, signal) => {
             if (signal || code === 0) {
                 if (signal)
-                    (0, log_1.default)(log_1.LogLevel.Info, `Command killed by signal ${signal}`);
+                    (0, log_1.default)(log_1.LogLevel.Warn, `Command "${commandString}" killed by signal ${signal}, exited with code ${code}`);
                 resolve(result.join(''));
             }
             else {
-                if (!printCommand)
-                    (0, log_1.default)(log_1.LogLevel.Warn, commandString);
+                (0, log_1.default)(log_1.LogLevel.Warn, `Command "${commandString}" exited with failure code ${code}`);
                 (0, log_1.default)(log_1.LogLevel.Warn, stderr.join(''));
                 (0, log_1.default)(log_1.LogLevel.Warn, result.join(''));
                 reject(new Error(`Command failed with code ${code}`));
