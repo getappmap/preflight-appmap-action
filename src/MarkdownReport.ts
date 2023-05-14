@@ -2,7 +2,7 @@ import {executeCommand} from './executeCommand';
 import verbose from './verbose';
 
 export default class MarkdownReport {
-  public appmapCommand = '/tmp/appmap';
+  public appmapCommand = 'node /home/runner/work/appmap-server/appmap-js/packages/cli/built/cli.js';
 
   constructor(public reportDir: string) {}
 
