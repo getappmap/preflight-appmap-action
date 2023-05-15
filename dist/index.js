@@ -51,7 +51,7 @@ class Compare {
         this.artifactStore = artifactStore;
         this.baseRevision = baseRevision;
         this.headRevision = headRevision;
-        this.appmapCommand = 'strace -e 'trace=!all' node /home/runner/work/appmap-server/appmap-js/packages/cli/built/cli.js';
+        this.appmapCommand = `strace -e 'trace=!all' node /home/runner/work/appmap-server/appmap-js/packages/cli/built/cli.js`;
     }
     compare() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -224,7 +224,7 @@ const verbose_1 = __importDefault(__nccwpck_require__(1753));
 class MarkdownReport {
     constructor(reportDir) {
         this.reportDir = reportDir;
-        this.appmapCommand = 'strace -e 'trace=!all' node /home/runner/work/appmap-server/appmap-js/packages/cli/built/cli.js';
+        this.appmapCommand = `strace -e 'trace=!all' node /home/runner/work/appmap-server/appmap-js/packages/cli/built/cli.js`;
     }
     generateReport() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -264,7 +264,7 @@ class Restore {
     constructor(revision, outputDir) {
         this.revision = revision;
         this.outputDir = outputDir;
-        this.appmapCommand = 'strace -e 'trace=!all' node /home/runner/work/appmap-server/appmap-js/packages/cli/built/cli.js';
+        this.appmapCommand = `strace -e 'trace=!all' node /home/runner/work/appmap-server/appmap-js/packages/cli/built/cli.js`;
     }
     restore() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -463,7 +463,7 @@ function runLocally() {
         parser.add_argument('-v', '--verbose');
         parser.add_argument('-d', '--directory', { help: 'Program working directory' });
         parser.add_argument('--appmap-command', {
-            default: 'strace -e 'trace=!all' node /home/runner/work/appmap-server/appmap-js/packages/cli/built/cli.js',
+            default: `strace -e 'trace=!all' node /home/runner/work/appmap-server/appmap-js/packages/cli/built/cli.js`,
         });
         parser.add_argument('--base-revision', { required: true });
         parser.add_argument('--head-revision', { required: true });

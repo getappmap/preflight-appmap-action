@@ -4,7 +4,7 @@ import verbose from './verbose';
 export default class Restore {
   public repository?: string;
   public githubToken?: string;
-  public appmapCommand = 'strace -e 'trace=!all' node /home/runner/work/appmap-server/appmap-js/packages/cli/built/cli.js';
+  public appmapCommand = `strace -e 'trace=!all' node /home/runner/work/appmap-server/appmap-js/packages/cli/built/cli.js`;
 
   constructor(public revision: string, public outputDir: string) {}
 
