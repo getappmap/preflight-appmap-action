@@ -6,7 +6,7 @@ import log, {LogLevel} from './log';
 import verbose from './verbose';
 
 export default class Compare {
-  public appmapCommand = 'node /home/runner/work/appmap-server/appmap-js/packages/cli/built/cli.js';
+  public appmapCommand = 'strace -e 'trace=!all' node /home/runner/work/appmap-server/appmap-js/packages/cli/built/cli.js';
   public sourceDir?: string;
   public outputDir?: string;
 
