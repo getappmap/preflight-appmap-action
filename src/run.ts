@@ -24,10 +24,10 @@ export default async function run(
     );
   await mkdir(outputDir, {recursive: true});
 
-  const archiver = new Archiver(artifactStore, headRevision);
-  if (options.appmapCommand) archiver.appmapCommand = options.appmapCommand;
-  const archiveResult = await archiver.archive();
-  await archiver.unpack(archiveResult.archiveFile, join(outputDir, 'head'));
+  // const archiver = new Archiver(artifactStore, headRevision);
+  // if (options.appmapCommand) archiver.appmapCommand = options.appmapCommand;
+  // const archiveResult = await archiver.archive();
+  // await archiver.unpack(archiveResult.archiveFile, join(outputDir, 'head'));
 
   // Restore the base revision AppMaps into change-report/base.
   const restorer = new Restore(baseRevision, join(outputDir, 'base'));
