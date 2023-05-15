@@ -18,10 +18,10 @@ export default async function run(
   const headRevision = (await executeCommand(`git rev-parse ${options.headRef}`)).trim();
 
   const outputDir = `.appmap/change-report/${baseRevision}-${headRevision}`;
-  if (existsSync(outputDir))
-    throw new Error(
-      `Output directory ${outputDir} already exists. Please remove it and try again.`
-    );
+  // if (existsSync(outputDir))
+  //   throw new Error(
+  //     `Output directory ${outputDir} already exists. Please remove it and try again.`
+  //   );
   await mkdir(outputDir, {recursive: true});
 
   // const archiver = new Archiver(artifactStore, headRevision);
